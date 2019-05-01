@@ -41,5 +41,4 @@ or chack logs:
 $ docker-compose logs
 ```
 
-## Enjoy!
-![](ohthathbridge.gif)
+**Enjoy!**
