@@ -1,0 +1,6 @@
+[submodule "oh-that-bridge-app"]
+	path = oh-that-bridge-app
+	url = git@github.com:barlima/oh-that-bridge-app.git
+[submodule "oh-that-bridge-api"]
+	path = oh-that-bridge-api
+	url = git@github.com:barlima/oh-that-bridge-api.git
