@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  ui:
+    container_name: oh-that-bridge-app
+    image: barlima/oh-that-bridge_ui:latest
+    ports:
+      - '80:8000'
+    env_file:
+      - ./.env
+    environment:
+      - NODE_ENV=development
+  api:
+    container_name: oh-that-bridge-api
+    image: barlima/oh-that-bridge_api:latest
+    command: bundle exec rails s -b '0.0.0.0'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+volumes:
+  pgdata:
