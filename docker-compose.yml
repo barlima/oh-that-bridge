@@ -10,23 +10,19 @@ services:
       - pgdata:/var/lib/postgresql/data
   ui:
     container_name: oh-that-bridge-app
-    build:
-      context: ./oh-that-bridge-app
-      dockerfile: Dockerfile
+    image: barlima/oh-that-bridge_ui:latest
     volumes:
       - './oh-that-bridge-app:/usr/src/app'
       - './oh-that-bridge-app/node_modules:/usr/src/app/node_modules'
     ports:
-      - '8000:8000'
+      - '80:8000'
     env_file:
       - ./oh-that-bridge-app/.env
     environment:
       - NODE_ENV=development
   api:
     container_name: oh-that-bridge-api
-    build: 
-      context: ./oh-that-bridge-api
-      dockerfile: Dockerfile
+    image: barlima/oh-that-bridge_api:latest
     command: bundle exec rails s -b '0.0.0.0'
     volumes:
       - ./oh-that-bridge-api:/usr/src/app
