@@ -8,12 +8,17 @@ services:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
       - pgdata:/var/lib/postgresql/data
+  server:
+    image: barlima/oh-that-bridge_nginx:latest
+    depends_on:
+      - ui
+      - api
+    ports:
+      - '80:80'
   ui:
     container_name: oh-that-bridge-app
     image: barlima/oh-that-bridge_ui:latest
     command: node server/server.js
-    ports:
-      - '80:8000'
     env_file:
       - ./.env
     environment:
@@ -21,11 +26,11 @@ services:
   api:
     container_name: oh-that-bridge-api
     image: barlima/oh-that-bridge_api:latest
-    command: bundle exec rails s -b '0.0.0.0'
-    ports:
-      - '3000:3000'
+    command: bundle exec rails s -b '0.0.0.0' -p 3000
     depends_on:
       - db
+    expose:
+      - '3000'
     tty: true
     stdin_open: true
 volumes:
