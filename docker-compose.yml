@@ -15,7 +15,7 @@ services:
       - './oh-that-bridge-app:/usr/src/app'
       - './oh-that-bridge-app/node_modules:/usr/src/app/node_modules'
     ports:
-      - '80:8000'
+      - '80:4000'
     env_file:
       - ./oh-that-bridge-app/.env
     environment:
