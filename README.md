@@ -3,12 +3,15 @@
 **Oh, that bridge!** is an application which the main goal is to help people recognizing and finding bridges they've seen during the day.
 In other words, people will find here many bridges displayed in a pleasant way.
 
+[Explore](http://18.185.105.153/)
+
 ## Why this application has ever been created?
 
 This application has been created in order to strengthen knowledge about:
 - React Hooks,
 - docker-compose,
 - `useQuery` and `useMutation` Apollo hooks
+- nginx
 - some UI and UX
 
 ## Starting the application
